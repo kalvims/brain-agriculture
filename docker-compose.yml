@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - ba
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: brain_user
+      POSTGRES_PASSWORD: Great#PASS#Culture
+      POSTGRES_DB: brain_agriculture
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ba
+
+networks:
+  ba:
+
+volumes:
+  postgres_data: 
