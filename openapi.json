@@ -1,0 +1,1788 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/api/v1/health/": {
+            "get": {
+                "tags": [
+                    "health"
+                ],
+                "summary": "Health Check",
+                "operationId": "health_check_api_v1_health__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/productor/": {
+            "get": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "List Productors",
+                "operationId": "list_productors_api_v1_productor__get",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "Offset"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 100,
+                            "default": 100,
+                            "title": "Limit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Productor"
+                                    },
+                                    "title": "Response List Productors Api V1 Productor  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "Create Productor",
+                "operationId": "create_productor_api_v1_productor__post",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductorCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Productor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/productor/{productor_id}": {
+            "get": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "Get Productor",
+                "operationId": "get_productor_api_v1_productor__productor_id__get",
+                "parameters": [
+                    {
+                        "name": "productor_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Productor Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Productor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "Update Productor",
+                "operationId": "update_productor_api_v1_productor__productor_id__put",
+                "parameters": [
+                    {
+                        "name": "productor_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Productor Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductorCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Productor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "Delete Productor",
+                "operationId": "delete_productor_api_v1_productor__productor_id__delete",
+                "parameters": [
+                    {
+                        "name": "productor_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Productor Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Productor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/productor/{productor_id}/farms": {
+            "get": {
+                "tags": [
+                    "productor"
+                ],
+                "summary": "Get Productor Farms",
+                "operationId": "get_productor_farms_api_v1_productor__productor_id__farms_get",
+                "parameters": [
+                    {
+                        "name": "productor_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Productor Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Farm"
+                                    },
+                                    "title": "Response Get Productor Farms Api V1 Productor  Productor Id  Farms Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/farm/": {
+            "get": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "List Farms",
+                "operationId": "list_farms_api_v1_farm__get",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "Offset"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 100,
+                            "default": 100,
+                            "title": "Limit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Farm"
+                                    },
+                                    "title": "Response List Farms Api V1 Farm  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Create Farm",
+                "operationId": "create_farm_api_v1_farm__post",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FarmCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farm"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/farm/{farm_id}": {
+            "get": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Get Farm",
+                "operationId": "get_farm_api_v1_farm__farm_id__get",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farm"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Update Farm",
+                "operationId": "update_farm_api_v1_farm__farm_id__put",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FarmCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farm"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Delete Farm",
+                "operationId": "delete_farm_api_v1_farm__farm_id__delete",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farm"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/farm/{farm_id}/add-plantation": {
+            "put": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Add Plantation",
+                "operationId": "add_plantation_api_v1_farm__farm_id__add_plantation_put",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FarmPlantationSeasonCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FarmPlantationSeason"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/farm/{farm_id}/plantations": {
+            "get": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Get Farm Plantations",
+                "operationId": "get_farm_plantations_api_v1_farm__farm_id__plantations_get",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FarmPlantation"
+                                    },
+                                    "title": "Response Get Farm Plantations Api V1 Farm  Farm Id  Plantations Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/farm/{farm_id}/seasons": {
+            "get": {
+                "tags": [
+                    "farm"
+                ],
+                "summary": "Get Farm Seasons",
+                "operationId": "get_farm_seasons_api_v1_farm__farm_id__seasons_get",
+                "parameters": [
+                    {
+                        "name": "farm_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Farm Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FarmSeason"
+                                    },
+                                    "title": "Response Get Farm Seasons Api V1 Farm  Farm Id  Seasons Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/plantation/": {
+            "get": {
+                "tags": [
+                    "plantation"
+                ],
+                "summary": "List Plantations",
+                "operationId": "list_plantations_api_v1_plantation__get",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "Offset"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 100,
+                            "default": 100,
+                            "title": "Limit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Plantation"
+                                    },
+                                    "title": "Response List Plantations Api V1 Plantation  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "plantation"
+                ],
+                "summary": "Create Plantation",
+                "operationId": "create_plantation_api_v1_plantation__post",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlantationCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plantation"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/plantation/{plantation_id}": {
+            "get": {
+                "tags": [
+                    "plantation"
+                ],
+                "summary": "Get Plantation",
+                "operationId": "get_plantation_api_v1_plantation__plantation_id__get",
+                "parameters": [
+                    {
+                        "name": "plantation_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Plantation Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plantation"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "plantation"
+                ],
+                "summary": "Update Plantation",
+                "operationId": "update_plantation_api_v1_plantation__plantation_id__put",
+                "parameters": [
+                    {
+                        "name": "plantation_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Plantation Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlantationCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plantation"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "plantation"
+                ],
+                "summary": "Delete Plantation",
+                "operationId": "delete_plantation_api_v1_plantation__plantation_id__delete",
+                "parameters": [
+                    {
+                        "name": "plantation_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Plantation Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plantation"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/season/": {
+            "get": {
+                "tags": [
+                    "season"
+                ],
+                "summary": "List Seasons",
+                "operationId": "list_seasons_api_v1_season__get",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "Offset"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 100,
+                            "default": 100,
+                            "title": "Limit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Season"
+                                    },
+                                    "title": "Response List Seasons Api V1 Season  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "season"
+                ],
+                "summary": "Create Season",
+                "operationId": "create_season_api_v1_season__post",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeasonCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Season"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/season/{season_id}": {
+            "get": {
+                "tags": [
+                    "season"
+                ],
+                "summary": "Get Season",
+                "operationId": "get_season_api_v1_season__season_id__get",
+                "parameters": [
+                    {
+                        "name": "season_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Season Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Season"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "season"
+                ],
+                "summary": "Update Season",
+                "operationId": "update_season_api_v1_season__season_id__put",
+                "parameters": [
+                    {
+                        "name": "season_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Season Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SeasonCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Season"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "season"
+                ],
+                "summary": "Delete Season",
+                "operationId": "delete_season_api_v1_season__season_id__delete",
+                "parameters": [
+                    {
+                        "name": "season_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Season Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Season"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reports/total-farms": {
+            "get": {
+                "tags": [
+                    "reports"
+                ],
+                "summary": "Get Total Farms",
+                "operationId": "get_total_farms_api_v1_reports_total_farms_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TotalFarms"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reports/total-area": {
+            "get": {
+                "tags": [
+                    "reports"
+                ],
+                "summary": "Get Total Area",
+                "operationId": "get_total_area_api_v1_reports_total_area_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TotalArea"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reports/state-statistics": {
+            "get": {
+                "tags": [
+                    "reports"
+                ],
+                "summary": "Get State Statistics",
+                "operationId": "get_state_statistics_api_v1_reports_state_statistics_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/StateStatistics"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get State Statistics Api V1 Reports State Statistics Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reports/plantation-statistics": {
+            "get": {
+                "tags": [
+                    "reports"
+                ],
+                "summary": "Get Plantation Statistics",
+                "operationId": "get_plantation_statistics_api_v1_reports_plantation_statistics_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/PlantationStatistics"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Plantation Statistics Api V1 Reports Plantation Statistics Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reports/ground-use-statistics": {
+            "get": {
+                "tags": [
+                    "reports"
+                ],
+                "summary": "Get Plantation Statistics",
+                "operationId": "get_plantation_statistics_api_v1_reports_ground_use_statistics_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GroundUseStatistics"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Farm": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "city": {
+                        "type": "string",
+                        "title": "City"
+                    },
+                    "state": {
+                        "type": "string",
+                        "title": "State"
+                    },
+                    "total_area": {
+                        "type": "number",
+                        "title": "Total Area"
+                    },
+                    "arable_area": {
+                        "type": "number",
+                        "title": "Arable Area"
+                    },
+                    "vegetation_area": {
+                        "type": "number",
+                        "title": "Vegetation Area"
+                    },
+                    "productor_id": {
+                        "type": "integer",
+                        "title": "Productor Id"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "city",
+                    "state",
+                    "total_area",
+                    "arable_area",
+                    "vegetation_area",
+                    "productor_id",
+                    "id"
+                ],
+                "title": "Farm"
+            },
+            "FarmCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "city": {
+                        "type": "string",
+                        "title": "City"
+                    },
+                    "state": {
+                        "type": "string",
+                        "title": "State"
+                    },
+                    "total_area": {
+                        "type": "number",
+                        "title": "Total Area"
+                    },
+                    "arable_area": {
+                        "type": "number",
+                        "title": "Arable Area"
+                    },
+                    "vegetation_area": {
+                        "type": "number",
+                        "title": "Vegetation Area"
+                    },
+                    "productor_id": {
+                        "type": "integer",
+                        "title": "Productor Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "city",
+                    "state",
+                    "total_area",
+                    "arable_area",
+                    "vegetation_area",
+                    "productor_id"
+                ],
+                "title": "FarmCreate"
+            },
+            "FarmPlantation": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "seasons": {
+                        "items": {
+                            "$ref": "#/components/schemas/Season"
+                        },
+                        "type": "array",
+                        "title": "Seasons"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "description",
+                    "id",
+                    "seasons"
+                ],
+                "title": "FarmPlantation"
+            },
+            "FarmPlantationSeason": {
+                "properties": {
+                    "plantation_id": {
+                        "type": "integer",
+                        "title": "Plantation Id"
+                    },
+                    "season_id": {
+                        "type": "integer",
+                        "title": "Season Id"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "farm_id": {
+                        "type": "integer",
+                        "title": "Farm Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plantation_id",
+                    "season_id",
+                    "id",
+                    "farm_id"
+                ],
+                "title": "FarmPlantationSeason"
+            },
+            "FarmPlantationSeasonCreate": {
+                "properties": {
+                    "plantation_id": {
+                        "type": "integer",
+                        "title": "Plantation Id"
+                    },
+                    "season_id": {
+                        "type": "integer",
+                        "title": "Season Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plantation_id",
+                    "season_id"
+                ],
+                "title": "FarmPlantationSeasonCreate"
+            },
+            "FarmSeason": {
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "title": "Year"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "plantations": {
+                        "items": {
+                            "$ref": "#/components/schemas/Plantation"
+                        },
+                        "type": "array",
+                        "title": "Plantations"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "year",
+                    "id",
+                    "plantations"
+                ],
+                "title": "FarmSeason"
+            },
+            "GroundUseStatistics": {
+                "properties": {
+                    "vegetation_area_percent": {
+                        "type": "number",
+                        "title": "Vegetation Area Percent"
+                    },
+                    "vegetation_area_total": {
+                        "type": "number",
+                        "title": "Vegetation Area Total"
+                    },
+                    "arable_area_percent": {
+                        "type": "number",
+                        "title": "Arable Area Percent"
+                    },
+                    "arable_area_total": {
+                        "type": "number",
+                        "title": "Arable Area Total"
+                    },
+                    "total_area": {
+                        "type": "number",
+                        "title": "Total Area"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vegetation_area_percent",
+                    "vegetation_area_total",
+                    "arable_area_percent",
+                    "arable_area_total",
+                    "total_area"
+                ],
+                "title": "GroundUseStatistics"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "Plantation": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "description",
+                    "id"
+                ],
+                "title": "Plantation"
+            },
+            "PlantationCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "description"
+                ],
+                "title": "PlantationCreate"
+            },
+            "PlantationSeasonStatistics": {
+                "properties": {
+                    "plantation_id": {
+                        "type": "integer",
+                        "title": "Plantation Id"
+                    },
+                    "total_plantations": {
+                        "type": "integer",
+                        "title": "Total Plantations"
+                    },
+                    "percent": {
+                        "type": "number",
+                        "title": "Percent"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plantation_id",
+                    "total_plantations",
+                    "percent"
+                ],
+                "title": "PlantationSeasonStatistics"
+            },
+            "PlantationStateStatistics": {
+                "properties": {
+                    "percent": {
+                        "type": "number",
+                        "title": "Percent"
+                    },
+                    "state_total": {
+                        "type": "integer",
+                        "title": "State Total"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "percent",
+                    "state_total"
+                ],
+                "title": "PlantationStateStatistics"
+            },
+            "PlantationStatistics": {
+                "properties": {
+                    "season_id": {
+                        "type": "integer",
+                        "title": "Season Id"
+                    },
+                    "season_plantations_total": {
+                        "type": "integer",
+                        "title": "Season Plantations Total"
+                    },
+                    "statistics": {
+                        "items": {
+                            "$ref": "#/components/schemas/PlantationSeasonStatistics"
+                        },
+                        "type": "array",
+                        "title": "Statistics"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "season_id",
+                    "season_plantations_total",
+                    "statistics"
+                ],
+                "title": "PlantationStatistics"
+            },
+            "Productor": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "cpf_cnpj": {
+                        "type": "string",
+                        "title": "Cpf Cnpj"
+                    },
+                    "birthdate": {
+                        "type": "string",
+                        "format": "date",
+                        "title": "Birthdate"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "cpf_cnpj",
+                    "birthdate",
+                    "id"
+                ],
+                "title": "Productor"
+            },
+            "ProductorCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "cpf_cnpj": {
+                        "type": "string",
+                        "title": "Cpf Cnpj"
+                    },
+                    "birthdate": {
+                        "type": "string",
+                        "format": "date",
+                        "title": "Birthdate"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "cpf_cnpj",
+                    "birthdate"
+                ],
+                "title": "ProductorCreate"
+            },
+            "Season": {
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "title": "Year"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "year",
+                    "id"
+                ],
+                "title": "Season"
+            },
+            "SeasonCreate": {
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "title": "Year"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "year"
+                ],
+                "title": "SeasonCreate"
+            },
+            "StateStatistics": {
+                "properties": {
+                    "state": {
+                        "type": "string",
+                        "title": "State"
+                    },
+                    "farms_total": {
+                        "type": "integer",
+                        "title": "Farms Total"
+                    },
+                    "farms_percent": {
+                        "type": "number",
+                        "title": "Farms Percent"
+                    },
+                    "plantation_statistics": {
+                        "$ref": "#/components/schemas/PlantationStateStatistics"
+                    },
+                    "ground_use_statistics": {
+                        "$ref": "#/components/schemas/GroundUseStatistics"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "state",
+                    "farms_total",
+                    "farms_percent",
+                    "plantation_statistics",
+                    "ground_use_statistics"
+                ],
+                "title": "StateStatistics"
+            },
+            "TotalArea": {
+                "properties": {
+                    "total_area": {
+                        "type": "number",
+                        "title": "Total Area"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "total_area"
+                ],
+                "title": "TotalArea"
+            },
+            "TotalFarms": {
+                "properties": {
+                    "total_farms": {
+                        "type": "integer",
+                        "title": "Total Farms"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "total_farms"
+                ],
+                "title": "TotalFarms"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}

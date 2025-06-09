@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from app.db.session import Base
-from app.db.models.farm_plantation import farm_plantation
+
 
 class Farm(Base):
     __tablename__ = "farms"
@@ -17,8 +18,7 @@ class Farm(Base):
     productor_id = Column(Integer, ForeignKey("productors.id"))
     productor = relationship("Productor", back_populates="farms")
 
-    plantations = relationship(
-        "Plantation",
-        secondary=farm_plantation,
-        back_populates="farms"
-    ) 
+    # Relacionamento com a tabela associativa
+    farm_plantations = relationship(
+        "FarmPlantationSeason",
+        back_populates="farm")
