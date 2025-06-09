@@ -14,10 +14,11 @@ Este projeto tem o objetivo de ser um serviço backend para uma aplicação de g
 ## Como rodar o projeto
 
 1. Clone o repositório
-2. Criar o banco de dados e rodar a migration: 
+2. Fazer o build da imagem docker. Na raiz do projeto execute:  `docker-compose build`
+3. Criar o banco de dados e rodar a migration: 
 `docker-compose run --rm api alembic upgrade head`
-2. Execute `docker-compose up --build`
-3. Acesse a API em `http://localhost:8000`
+4. Execute `docker-compose up`
+5. Acesse a API em `http://localhost:8000`
 
 ## Exemplos de Endpoints
 
